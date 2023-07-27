@@ -14,10 +14,12 @@ galleryEl.addEventListener('click', handlerClick)
 
 function handlerClick(evt) {
     evt.preventDefault();
-    if (!evt.target.classList.contains("gallery__item")) {
+   
+
+    if (evt.target.className !== "gallery__image") {
         return;
     };
-    // щось перестає бібліотека працювати 
+    
     
 
     const galleryClickImg = evt.target.dataset.source;
@@ -26,6 +28,11 @@ function handlerClick(evt) {
 `)
     instance.show();
 
+    galleryEl.addEventListener("keydown", (evt) => {
+        if (evt.code === "Escape") {
+            instance.close();
+        }
+    })
 
     
 };
